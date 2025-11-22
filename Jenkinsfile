@@ -21,7 +21,6 @@ pipeline {
         stage('Deploy index.html') {
             steps {
                 sh '''
-                    sudo rm -f /var/www/html/index.html
                     sudo cp index.html /var/www/html/index.html
                     sudo chown www-data:www-data /var/www/html/index.html
                 '''
@@ -30,7 +29,7 @@ pipeline {
 
         stage('Restart Apache') {
             steps {
-                sh 'sudo systemctl restart nginx'
+                sh 'sudo systemctl restart apache2'
             }
         }
     }
