@@ -7,7 +7,7 @@ pipeline {
             steps {
                 sh '''
                     sudo apt-get update -y
-                    sudo apt-get install nginx -y || true
+                    sudo apt-get install nginx -y
                     sudo systemctl enable nginx
                     sudo systemctl start nginx
                 '''
