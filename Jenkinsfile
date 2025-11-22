@@ -9,13 +9,11 @@ pipeline {
             }
         }
 
-        stage('Install Nginx') {
+        stage('Install Apache') {
             steps {
                 sh '''
                     sudo apt-get update -y
-                    sudo apt-get install nginx -y
-                    sudo systemctl enable nginx
-                    sudo systemctl start nginx
+                    sudo apt install apache2
                 '''
             }
         }
@@ -30,7 +28,7 @@ pipeline {
             }
         }
 
-        stage('Restart Nginx') {
+        stage('Restart Apache') {
             steps {
                 sh 'sudo systemctl restart nginx'
             }
