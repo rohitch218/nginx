@@ -6,10 +6,10 @@ pipeline {
         stage('Install Nginx') {
             steps {
                 sh '''
-                    sudo apt-get update -y
-                    sudo apt-get install nginx -y || true
-                    sudo systemctl enable nginx
-                    sudo systemctl start nginx
+                     apt-get update -y
+                     apt-get install nginx -y || true
+                     systemctl enable nginx
+                     systemctl start nginx
                 '''
             }
         }
@@ -17,16 +17,16 @@ pipeline {
         stage('Deploy index.html') {
             steps {
                 sh '''
-                    sudo rm -f /var/www/html/index.html
-                    sudo cp index.html /var/www/html/index.html
-                    sudo chown www-data:www-data /var/www/html/index.html
+                     rm -f /var/www/html/index.html
+                     cp index.html /var/www/html/index.html
+                     chown www-data:www-data /var/www/html/index.html
                 '''
             }
         }
 
         stage('Restart Nginx') {
             steps {
-                sh 'sudo systemctl restart nginx'
+                sh 'systemctl restart nginx'
             }
         }
     }
